@@ -1,18 +1,25 @@
 body {
     font-family: Arial, sans-serif;
     background-color: #f9f1f9; /* Light pink background */
-    text-align: center;
-    padding: 20px;
+    display: flex;
+    flex-direction: column; /* Ensures content stacks properly */
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh; /* Full viewport height */
+    margin: 0;
 }
 
 .container {
     background: white;
-    padding: 30px;
-    max-width: 400px;
-    margin: auto;
-    border-radius: 8px;
+    padding: 40px; /* Keep some padding for spacing */
+    max-width: 60%; /* Reduce the max width */
+    width: 500px; /* Set a smaller fixed width */
+    border-radius: 12px; /* Keep rounded edges */
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin: auto; /* Ensure it's centered */
 }
+
 
 .logo {
     max-width: 80px; /* Adjust this value to resize the logo */
