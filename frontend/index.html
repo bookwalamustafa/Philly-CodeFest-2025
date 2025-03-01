@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASL to Text Converter</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>ASL to Text Converter</h1>
+
+        <div class="dropdown-container">
+            <label for="fromLanguage">From:</label>
+            <select id="fromLanguage">
+                <option value="ASL">ASL</option>
+                <option value="VSL">VSL</option>
+                <option value="English">English</option>
+                <option value="Vietnamese">Vietnamese</option>
+            </select>
+        </div>
+
+        <div class="dropdown-container">
+            <label for="toLanguage">To:</label>
+            <select id="toLanguage">
+                <option value="ASL">ASL</option>
+                <option value="VSL">VSL</option>
+                <option value="English">English</option>
+                <option value="Vietnamese">Vietnamese</option>
+            </select>
+        </div>
+
+        <button onclick="convertText()">Convert</button>
+
+        <div id="output"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
