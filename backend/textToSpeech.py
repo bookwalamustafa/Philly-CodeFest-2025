@@ -7,4 +7,4 @@ def text_to_speech(text, rate=190):
     engine.runAndWait()
 
 # Test the function with a sample text
-text_to_speech("Guys, how does this sound? Is it too fast or slow?")
+text_to_speech("Do you want to eat lunch now or later?")
