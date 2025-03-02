@@ -96,12 +96,11 @@ def main():
     # Finger gesture history ################################################
     finger_gesture_history = deque(maxlen=history_length)
 
-    # Variables for storing stable hand sign labels
-    stored_gesture_labels = []      # Array to store hand sign labels when stable
-    current_stable_gesture = None   # Current stable hand sign id
-    stable_gesture_start = None     # Time when the current hand sign was first detected
-    stable_threshold = 3.0          # Required consistency duration (in seconds)
-
+    # Variables for storing stable hand sign labels as a concatenated string
+    stored_gesture_string = ""     # String to store concatenated hand sign labels
+    current_stable_gesture = None  # Current stable hand sign id
+    stable_gesture_start = None    # Time when the current hand sign was first detected
+    stable_threshold = 3.0         # Required consistency duration (in seconds)
 
     #  ########################################################################
     mode = 0
@@ -162,11 +161,11 @@ def main():
                 else:
                     if current_time - stable_gesture_start >= stable_threshold:
                         label = keypoint_classifier_labels[current_stable_gesture]
-                        stored_gesture_labels.append(label)
+                        stored_gesture_string += label
                         print("Stored hand sign label:", label)
-                        # Reset the timer to allow consecutive appending of the same label
+                        # Reset the timer to allow consecutive concatenation of the same label
                         stable_gesture_start = current_time
-                # --- End New Code ---                
+                # --- End New Code ---
 
                 # Finger gesture classification
                 finger_gesture_id = 0
