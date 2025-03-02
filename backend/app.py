@@ -188,6 +188,8 @@ def select_mode(key, mode):
         number = key - 48
     if 97 <= key <= 103:
         number = key - 87 # 10 ~ 16
+    if 111 <= key <= 119:
+        number = key - 94 # 17 ~ 25
     if key == 110:  # n
         mode = 0
     if key == 107:  # k
