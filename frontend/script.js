@@ -29,7 +29,7 @@ cameraBtn.addEventListener('click', async () => {
 
 // Function to trigger the file input when the Upload Video button is clicked
 function triggerFileInput() {
-    videoUploadInput.click();
+    videoUploadInput.click(); // This triggers the file input dialog
 }
 
 // Function to handle the video file when it's selected
@@ -55,4 +55,3 @@ function convertText() {
     // Update the output box with the translated text
     document.getElementById("output-box").innerText = translatedText;
 }
-

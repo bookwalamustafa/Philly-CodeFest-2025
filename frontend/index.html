@@ -22,8 +22,12 @@
             <!-- Buttons Container -->
             <div class="camera-buttons">
                 <button id="camera-btn" onclick="toggleCamera()">Start Camera</button>
-                <button id="upload-video-btn" onclick="uploadVideo()">Upload Video</button>
+                <!-- Upload Video Button -->
+                <button id="upload-video-btn" onclick="triggerFileInput()">Upload Video</button>
             </div>
+
+            <!-- Hidden file input for video upload -->
+            <input type="file" id="video-upload" accept="video/*" style="display: none;" onchange="handleVideoUpload(event)">
         </div>
 
         <!-- Converter Box -->
