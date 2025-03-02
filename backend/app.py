@@ -61,7 +61,7 @@ def main():
     mp_hands = mp.solutions.hands
     hands = mp_hands.Hands(
         static_image_mode=use_static_image_mode,
-        max_num_hands=1,
+        max_num_hands=4,
         min_detection_confidence=min_detection_confidence,
         min_tracking_confidence=min_tracking_confidence,
     )
@@ -186,6 +186,10 @@ def select_mode(key, mode):
     number = -1
     if 48 <= key <= 57:  # 0 ~ 9
         number = key - 48
+    if 97 <= key <= 103:
+        number = key - 87 # 10 ~ 16
+    if 111 <= key <= 119:
+        number = key - 94 # 17 ~ 25
     if key == 110:  # n
         mode = 0
     if key == 107:  # k
@@ -282,13 +286,13 @@ def pre_process_point_history(image, point_history):
 def logging_csv(number, mode, landmark_list, point_history_list):
     if mode == 0:
         pass
-    if mode == 1 and (0 <= number <= 9):
-        csv_path = '/Users/neil/Desktop/Codefest/Philly-CodeFest-2025/backend/model/keypoint_classifier/keypoint.csv'
+    if mode == 1 and (0 <= number <= 25):
+        csv_path = './model/keypoint_classifier/keypoint.csv'
         with open(csv_path, 'a', newline="") as f:
             writer = csv.writer(f)
             writer.writerow([number, *landmark_list])
-    if mode == 2 and (0 <= number <= 9):
-        csv_path = '/Users/neil/Desktop/Codefest/Philly-CodeFest-2025/backend/model/point_history_classifier/point_history.csv'
+    if mode == 2 and (0 <= number <= 25):
+        csv_path = './model/point_history_classifier/point_history.csv'
         with open(csv_path, 'a', newline="") as f:
             writer = csv.writer(f)
             writer.writerow([number, *point_history_list])
@@ -533,7 +537,7 @@ def draw_info(image, fps, mode, number):
         cv.putText(image, "MODE:" + mode_string[mode - 1], (10, 90),
                    cv.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 255), 1,
                    cv.LINE_AA)
-        if 0 <= number <= 9:
+        if 0 <= number <= 25:
             cv.putText(image, "NUM:" + str(number), (10, 110),
                        cv.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 255), 1,
                        cv.LINE_AA)
