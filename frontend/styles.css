@@ -1,46 +1,129 @@
+/* Body and Wrapper */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f9f1f9; /* Light pink background */
+    background-color: #f8e7ed; /* Light pink background */
     display: flex;
-    flex-direction: column; /* Ensures content stacks properly */
-    align-items: center;
-    justify-content: center;
+    flex-direction: column; /* Make the layout column */
+    justify-content: flex-start; /* Align content at the top */
+    align-items: center; /* Center content horizontally */
     min-height: 100vh; /* Full viewport height */
     margin: 0;
 }
 
-.container {
-    background: white;
-    padding: 40px; /* Keep some padding for spacing */
-    max-width: 60%; /* Reduce the max width */
-    width: 500px; /* Set a smaller fixed width */
-    border-radius: 12px; /* Keep rounded edges */
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    margin: auto; /* Ensure it's centered */
-}
-
-
-.logo {
-    max-width: 80px; /* Adjust this value to resize the logo */
-    height: auto;     /* Maintain aspect ratio */
-    margin-bottom: 20px; /* Space between the logo and the title */
-}
-
-h1 {
-    color: #e91e63; /* Bright pink color for the title */
-    font-size: 2rem;
+/* Header Image Section */
+.header-image {
+    width: 600px; /* Fixed width */
+    height: auto;
+    object-fit: cover;
+    margin-top: 20px;
     margin-bottom: 20px;
 }
 
+/* Wrapper to contain the camera and the converter */
+.wrapper {
+    display: flex;
+    width: 100%; /* Full width of the page */
+    justify-content: space-between; /* Space out the camera and converter containers */
+}
+
+/* Camera Section */
+.camera-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 50px;
+    height: 100vh; /* Full viewport height */
+    justify-content: center;
+    width: 600px;
+    position: relative;
+    margin-top: -60px;
+}
+
+/* Camera Icon */
+.camera-icon {
+    width: 300px; /* Increase size */
+    height: auto;
+    position: absolute;
+    top: 220px; /* Move it down */
+    left: 50%;
+    transform: translateX(-50%); /* Center horizontally */
+    z-index: 10; /* Ensure it appears above the camera box */
+}
+
+/* Camera Video */
+#camera {
+    border: 2px solid #e91e63;
+    border-radius: 8px;
+    width: 100%;
+    height: 470px;
+    margin-bottom: 10px;
+}
+
+/* Camera Buttons Container */
+.camera-buttons {
+    display: flex;
+    gap: 25px; /* Space between buttons */
+    margin-top: 10px;
+}
+
+/* Camera and Upload Buttons */
+#camera-btn, 
+#upload-video-btn {
+    background: #e91e63;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+#camera-btn:hover, 
+#upload-video-btn:hover {
+    background: #c2185b;
+}
+
+/* Converter Section */
+.container {
+    background: white;
+    padding: 40px;
+    max-width: 60%;
+    width: 600px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin: 30px;
+    position: relative;
+    left: 8%;
+    transform: translateX(-20%);
+    height: 393px; /* Increased height to accommodate the output box */
+    margin-top: 80px;
+}
+
+/* Logo Section */
+.logo {
+    max-width: 80px;
+    height: auto;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: 0;
+}
+
+/* Title (h1) */
+h1 {
+    margin-top: 0; /* Removed any extra space above the title */
+    margin-bottom: 10px; /* Added some space below the title */
+}
+
+/* Dropdown Section */
 .dropdown-container {
-    margin: 15px 0;
+    margin: 10px 0; /* Reduced margin to move dropdowns up */
 }
 
 label {
     font-size: 16px;
     font-weight: bold;
-    color: #e91e63; /* Matching pink color for labels */
+    color: #e91e63;
 }
 
 select {
@@ -48,33 +131,62 @@ select {
     padding: 8px;
     margin-top: 5px;
     font-size: 16px;
-    border: 1px solid #e91e63; /* Pink border for select dropdowns */
+    border: 1px solid #e91e63;
     border-radius: 5px;
 }
 
 select:focus {
     outline: none;
-    border-color: #c2185b; /* Slightly darker pink on focus */
+    border-color: #c2185b;
 }
 
-button {
-    background: #e91e63; /* Pink background for the button */
+/* Output Box and Button Container */
+.output-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px; /* Space between the output box and button */
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+/* Output Box */
+.output-box {
+    background-color: #fdf1f9;
+    border: 1px solid #e91e63;
+    border-radius: 8px;
+    padding: 10px;
+    margin-top:5px;
+    height: 70px; /* Set a fixed height to make it shorter */
+    width: 1600px; /* Adjust width of the output box */
+    font-size: 16px;
+    color: #333;
+    text-align: left;
+    overflow-y: auto; /* Allows scrolling if content exceeds the box */
+}
+
+/* Audio Button (Replaced with Image) */
+.convert-audio-btn {
+    cursor: pointer;
+    width: 40px; /* Adjust width of the image */
+    height: auto; /* Maintain aspect ratio */
+}
+
+/* Convert Button */
+.convert-btn {
+    background: #e91e63;
     color: white;
     padding: 10px 15px;
     border: none;
     cursor: pointer;
-    margin-top: 20px;
+    margin-top: 20px; /* Adjust vertical spacing */
     font-size: 16px;
     border-radius: 5px;
+    position: relative;
+    top: -200px; /* Moves the button up */
+    left: 350px; /* Moves the button to the right */
 }
 
-button:hover {
-    background: #c2185b; /* Darker pink on hover */
-}
-
-#output {
-    margin-top: 20px;
-    font-size: 18px;
-    font-weight: bold;
-    color: #333;
+.convert-btn:hover {
+    background: #c2185b;
 }

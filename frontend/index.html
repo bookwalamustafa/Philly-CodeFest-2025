@@ -7,37 +7,67 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Image at the top of the page -->
+    <img src="images/Header.png" alt="Header Image" class="header-image">
 
-    <div class="container">
-        <!-- Logo Section -->
-        <img src="images/Logo.jpg" alt="Logo" class="logo">
+    <!-- Wrapper to contain the camera and the converter -->
+    <div class="wrapper">
+        <!-- Camera Box -->
+        <div class="camera-container">
+            <!-- Camera Image on Top -->
+            <img src="images/camera.png" alt="Camera Icon" class="camera-icon">
+            
+            <video id="camera" width="320" height="240" autoplay></video>
+            
+            <!-- Buttons Container -->
+            <div class="camera-buttons">
+                <button id="camera-btn" onclick="toggleCamera()">Start Camera</button>
+                <!-- Upload Video Button -->
+                <button id="upload-video-btn" onclick="triggerFileInput()">Upload Video</button>
+            </div>
 
-        <h1>ASL to Text Converter</h1>
-
-        <div class="dropdown-container">
-            <label for="fromLanguage">From:</label>
-            <select id="fromLanguage">
-                <option value="ASL">ASL</option>
-                <option value="VSL">VSL</option>
-                <option value="English">English</option>
-                <option value="Vietnamese">Vietnamese</option>
-            </select>
+            <!-- Hidden file input for video upload -->
+            <input type="file" id="video-upload" accept="video/*" style="display: none;" onchange="handleVideoUpload(event)">
         </div>
 
-        <div class="dropdown-container">
-            <label for="toLanguage">To:</label>
-            <select id="toLanguage">
-                <option value="ASL">ASL</option>
-                <option value="VSL">VSL</option>
-                <option value="English">English</option>
-                <option value="Vietnamese">Vietnamese</option>
-            </select>
+        <!-- Converter Box -->
+        <div class="container">
+            <!-- Logo Section -->
+            <img src="images/Logo.jpg" alt="Logo" class="logo">
+
+            <h1>Signflow Translator</h1>
+
+            <div class="dropdown-container">
+                <label for="fromLanguage">From:</label>
+                <select id="fromLanguage">
+                    <option value="ASL">ASL</option>
+                    <option value="ArSL">ArSL</option>
+                </select>
+            </div>
+
+            <div class="dropdown-container">
+                <label for="toLanguage">To:</label>
+                <select id="toLanguage">
+                    <option value="English">English</option>
+                    <option value="Arabic">Arabic</option>
+                </select>
+            </div>
+
+            <!-- Output Box and Button Container -->
+            <div class="output-container">
+                <!-- Output Box -->
+                <div id="output-box" class="output-box">
+                    <!-- Translated text will appear here -->
+                </div>
+
+                <!-- Button to Convert Output to Audio (Image) -->
+                <img src="images/speaker.png" alt="Convert to Audio" class="convert-audio-btn" onclick="convertToAudio()">
+            </div>
         </div>
-
-        <button onclick="convertText()">Convert</button>
-
-        <div id="output"></div>
     </div>
+
+    <!-- Translate Button -->
+    <button class="convert-btn" onclick="convertText()">Translate</button>
 
     <script src="script.js"></script>
 </body>
